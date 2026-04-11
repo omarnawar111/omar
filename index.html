@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omar Ibrahim | مصمم ومبرمج</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #00d2ff;
+    --text: #f8fafc;
+    --sub: #94a3b8;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Cairo',sans-serif;
+}
+
+/* الخلفية */
+body{
+    background: url("https://images.unsplash.com/photo-1605902711622-cfb43c4437d1") no-repeat center center/cover;
+    color: var(--text);
+}
+
+/* Overlay */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background: linear-gradient(to right, rgba(2,6,23,0.95), rgba(2,6,23,0.7));
+    z-index:0;
+}
+
+/* Glow */
+body::after{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    background: radial-gradient(circle, #00d2ff55, transparent 70%);
+    top:20%;
+    left:70%;
+    filter: blur(80px);
+    z-index:0;
+}
+
+header, .container, footer{
+    position:relative;
+    z-index:1;
+}
+
+/* HERO */
+header{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+}
+
+h1{
+    font-size:3rem;
+    color:var(--primary);
+}
+
+.subtitle{
+    color:var(--sub);
+    margin-top:10px;
+    font-size:1.4rem;
+}
+
+.btn{
+    margin-top:15px;
+    padding:12px 25px;
+    border-radius:30px;
+    background:var(--primary);
+    color:#000;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    opacity:0.8;
+}
+
+/* SECTIONS */
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+section{
+    margin-bottom:60px;
+}
+
+h2{
+    border-right:4px solid var(--primary);
+    padding-right:15px;
+    margin-bottom:25px;
+}
+
+.card{
+    background: rgba(30,41,59,0.85);
+    padding:25px;
+    border-radius:15px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.skill{
+    background: rgba(30,41,59,0.85);
+    padding:15px;
+    text-align:center;
+    border-radius:10px;
+    border-bottom:2px solid var(--primary);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    color:var(--sub);
+}
+
+.socials a{
+    display:block;
+    margin:10px 0;
+    font-size:20px;
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
+
+.socials a:hover{
+    color:var(--primary);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Omar Ibrahim</h1>
+    <p class="subtitle">Graphic Designer & Developer</p>
+
+    <a class="btn" href="https://wa.me/201003580014?text=مرحبا،%20أريد%20حجز%20مشروع">
+        احجز مشروعك دلوقتي
+    </a>
+</header>
+
+<div class="container">
+
+<section>
+<h2>من أنا</h2>
+<div class="card">
+أنا مصمم جرافيك ومطور مواقع، أستطيع تحويل فكرتك إلى تصميم احترافي وموقع حقيقي جاهز.
+</div>
+</section>
+
+<section>
+<h2>الخدمات</h2>
+<div class="card">
+<ul>
+<li>تصميم شعارات وهوية بصرية</li>
+<li>تصميم منشورات سوشيال ميديا</li>
+<li>تصميم مواقع باستخدام HTML</li>
+<li>برمجة باستخدام Java</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>أدوات التصميم</h2>
+<div class="grid">
+<div class="skill">فوتوشوب</div>
+<div class="skill">إليستريتور</div>
+<div class="skill">كانفا</div>
+<div class="skill">فيجما</div>
+</div>
+</section>
+
+<section>
+<h2>أدوات البرمجة</h2>
+<div class="grid">
+<div class="skill">HTML</div>
+<div class="skill">CSS</div>
+<div class="skill">Java</div>
+</div>
+</section>
+
+<section>
+<h2>المهارات</h2>
+<div class="grid">
+<div class="skill">تصميم واجهات المستخدم (UI/UX)</div>
+<div class="skill">تصميم سوشيال ميديا</div>
+<div class="skill">تصميم الشعارات</div>
+<div class="skill">تصميم متجاوب</div>
+<div class="skill">حل المشكلات</div>
+<div class="skill">التفكير الإبداعي</div>
+</div>
+</section>
+
+<section>
+<h2>التعليم</h2>
+<div class="card">
+طالب في الدبلومة الأمريكية
+</div>
+</section>
+
+</div>
+
+<footer>
+
+<div class="socials">
+
+<a href="https://www.facebook.com/omer.ibraheem.5477" target="_blank">
+فيسبوك
+</a>
+
+<a href="https://www.instagram.com/omarnawar111/" target="_blank">
+إنستجرام
+</a>
+
+<a href="https://wa.me/201003580014" target="_blank">
+واتساب
+</a>
+
+<a href="mailto:iomer3286@gmail.com">
+البريد الإلكتروني
+</a>
+
+</div>
+
+<br>
+© 2026 Omar Ibrahim
+
+</footer>
+
+</body>
+</html>
