@@ -1,0 +1,581 @@
+# موقع احترافي شخصي - Omar Ibrahim
+
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omar Ibrahim | Web Developer & Graphic Designer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:'Cairo',sans-serif;
+    }
+
+    body{
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#00d0ff33;
+      filter:blur(120px);
+      top:-100px;
+      right:-100px;
+      z-index:-1;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      width:400px;
+      height:400px;
+      background:#8b5cf633;
+      filter:blur(120px);
+      bottom:-100px;
+      left:-100px;
+      z-index:-1;
+    }
+
+    nav{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(0,0,0,.4);
+      backdrop-filter:blur(15px);
+      z-index:999;
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:900;
+      color:#00d0ff;
+      letter-spacing:1px;
+    }
+
+    nav ul{
+      display:flex;
+      gap:25px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    nav ul li a:hover{
+      color:#00d0ff;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:60px;
+      padding:140px 8% 80px;
+      flex-wrap:wrap;
+    }
+
+    .hero-text{
+      flex:1;
+      min-width:300px;
+    }
+
+    .hero-text h1{
+      font-size:65px;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero-text h1 span{
+      color:#00d0ff;
+    }
+
+    .hero-text p{
+      font-size:20px;
+      color:#cfcfcf;
+      line-height:1.9;
+      margin-bottom:30px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 30px;
+      border-radius:15px;
+      text-decoration:none;
+      font-weight:700;
+      transition:.4s;
+      border:2px solid #00d0ff;
+    }
+
+    .btn-primary{
+      background:#00d0ff;
+      color:#000;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px);
+      box-shadow:0 0 25px #00d0ff;
+    }
+
+    .btn-outline{
+      color:white;
+    }
+
+    .btn-outline:hover{
+      background:#00d0ff;
+      color:#000;
+      transform:translateY(-5px);
+    }
+
+    .hero-image{
+      flex:1;
+      min-width:300px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .hero-image img{
+      width:420px;
+      max-width:100%;
+      border-radius:35px;
+      border:3px solid #00d0ff;
+      box-shadow:0 0 40px #00d0ff55;
+      object-fit:cover;
+    }
+
+    section{
+      padding:100px 8%;
+    }
+
+    .title{
+      font-size:45px;
+      margin-bottom:50px;
+      text-align:center;
+    }
+
+    .title span{
+      color:#00d0ff;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:25px;
+      padding:35px;
+      transition:.4s;
+      backdrop-filter:blur(15px);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      border-color:#00d0ff;
+      box-shadow:0 0 25px rgba(0,208,255,.3);
+    }
+
+    .card h3{
+      font-size:28px;
+      margin-bottom:15px;
+      color:#00d0ff;
+    }
+
+    .card p{
+      color:#d4d4d4;
+      line-height:1.9;
+    }
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .project{
+      background:#0f172a;
+      border-radius:25px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      transition:.4s;
+    }
+
+    .project:hover{
+      transform:scale(1.03);
+      border-color:#00d0ff;
+    }
+
+    .project img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .project-content{
+      padding:25px;
+    }
+
+    .project-content h3{
+      margin-bottom:15px;
+      color:#00d0ff;
+      font-size:25px;
+    }
+
+    .project-content p{
+      color:#cfcfcf;
+      line-height:1.8;
+    }
+
+    .socials{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+      margin-top:30px;
+    }
+
+    .socials a{
+      text-decoration:none;
+      color:white;
+      background:#0f172a;
+      padding:15px 22px;
+      border-radius:15px;
+      transition:.3s;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    .socials a:hover{
+      background:#00d0ff;
+      color:black;
+      transform:translateY(-5px);
+    }
+
+    .contact-box{
+      background:rgba(255,255,255,.05);
+      padding:40px;
+      border-radius:30px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    .contact-box h3{
+      font-size:35px;
+      margin-bottom:20px;
+      color:#00d0ff;
+    }
+
+    .contact-box p{
+      margin:12px 0;
+      font-size:20px;
+      color:#d8d8d8;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      border-top:1px solid rgba(255,255,255,.1);
+      color:#aaa;
+      margin-top:50px;
+    }
+
+    @media(max-width:768px){
+      .hero-text h1{
+        font-size:45px;
+      }
+
+      nav ul{
+        display:none;
+      }
+
+      .hero{
+        text-align:center;
+      }
+
+      .buttons{
+        justify-content:center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">OMAR</div>
+
+    <ul>
+      <li><a href="#about">عني</a></li>
+      <li><a href="#services">الخدمات</a></li>
+      <li><a href="#projects">المشاريع</a></li>
+      <li><a href="#contact">التواصل</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+
+    <div class="hero-text">
+      <h1>
+        انا <span>Omar Ibrahim</span><br>
+        Web Developer & Graphic Designer
+      </h1>
+
+      <p>
+        مبرمج مواقع احترافية ومصمم جرافيك.
+        بعمل مواقع سريعة وعصرية بتصميمات احترافية وتجربة مستخدم قوية.
+        بستخدم أحدث التقنيات في تطوير الويب والتصميم.
+      </p>
+
+      <div class="buttons">
+        <a href="#contact" class="btn btn-primary">تواصل معايا</a>
+        <a href="#projects" class="btn btn-outline">شوف شغلي</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <!-- حط صورتك هنا -->
+      <img src="your-photo.jpg" alt="Omar Ibrahim">
+    </div>
+
+  </section>
+
+  <section id="about">
+    <h2 class="title">من <span>أنا</span></h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Web Development</h3>
+        <p>
+          تصميم وبرمجة مواقع احترافية متجاوبة مع جميع الأجهزة باستخدام HTML و CSS و JavaScript.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>UI/UX Design</h3>
+        <p>
+          تصميم واجهات عصرية وجذابة تعطي تجربة استخدام احترافية وسهلة.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Graphic Design</h3>
+        <p>
+          تصميم لوجوهات وبنرات وصور سوشيال ميديا وهوية بصرية كاملة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2 class="title">الخدمات <span>الاحترافية</span></h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Landing Pages</h3>
+        <p>
+          صفحات هبوط احترافية لزيادة العملاء والمبيعات.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Portfolio Websites</h3>
+        <p>
+          مواقع شخصية احترافية للمبرمجين وصناع المحتوى والمصممين.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Gaming Websites</h3>
+        <p>
+          مواقع جيمرز واستريمرات بتأثيرات وحركات احترافية.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Social Media Designs</h3>
+        <p>
+          تصميمات احترافية للسوشيال ميديا والإعلانات.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="title">أحدث <span>الأعمال</span></h2>
+
+    <div class="projects">
+
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="project">
+
+        <div class="project-content">
+          <h3>Hogan Streamer Website</h3>
+          <p>
+            موقع احترافي لاستريمر بتصميم عصري وتأثيرات قوية.
+          </p>
+          <br>
+          <a href="https://omarnawar111.github.io/hogan/" target="_blank" class="btn btn-primary">فتح الموقع</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop" alt="project">
+
+        <div class="project-content">
+          <h3>Modern Landing Page</h3>
+          <p>
+            Landing Page احترافية سريعة ومتجاوبة.
+          </p>
+          <br>
+          <a href="https://1421.netlify.app/" target="_blank" class="btn btn-primary">فتح الموقع</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1200&auto=format&fit=crop" alt="project">
+
+        <div class="project-content">
+          <h3>Sheko Elgen Website</h3>
+          <p>
+            موقع جيمينج واستايل احترافي بإضاءات وتأثيرات حديثة.
+          </p>
+          <br>
+          <a href="https://sheko-elgen.netlify.app/" target="_blank" class="btn btn-primary">فتح الموقع</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="project">
+
+        <div class="project-content">
+          <h3>Elmnoufy Portfolio</h3>
+          <p>
+            بورتفوليو احترافي يعرض الخدمات وأعمال البرمجة والتصميم.
+          </p>
+          <br>
+          <a href="https://elmnoufy.netlify.app/" target="_blank" class="btn btn-primary">فتح الموقع</a>
+        </div>
+      </div>
+
+
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="project">
+
+        <div class="project-content">
+          <h3>Modern Website</h3>
+          <p>
+            موقع احترافي بتصميم عصري وتأثيرات حديثة وسرعة عالية.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200&auto=format&fit=crop" alt="project">
+
+        <div class="project-content">
+          <h3>Graphic Design</h3>
+          <p>
+            تصميمات سوشيال ميديا احترافية وهوية بصرية كاملة.
+          </p>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="project">
+
+        <div class="project-content">
+          <h3>Creative Portfolio</h3>
+          <p>
+            بورتفوليو احترافي للمبدعين والمبرمجين.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2 class="title">السوشيال <span>ميديا</span></h2>
+
+    <div class="socials">
+      <a href="https://www.facebook.com/omer.ibraheem.5477" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/omarnawar111/" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com/@omeribraheem0" target="_blank">TikTok</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="title">تواصل <span>معايا</span></h2>
+
+    <div class="contact-box">
+      <h3>جاهز لأي شغل احترافي 🔥</h3>
+
+      <p>📞 01003580014</p>
+      <p>💬 Discord: elmnoufy1</p>
+      <p>📍 Egypt</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Omar Ibrahim - All Rights Reserved
+  </footer>
+
+</body>
+</html>
+```
+
+# طريقة إضافة صورتك
+
+1. غير اسم الصورة بتاعك لـ:
+
+```bash
+your-photo.jpg
+```
+
+2. حط الصورة جنب ملف الـ HTML.
+
+3. افتح الملف وهيشتغل عادي.
+
+# طريقة تشغيل الموقع
+
+* اعمل ملف جديد باسم:
+
+```bash
+index.html
+```
+
+* انسخ الكود كله جواه.
+
+* افتحه بالمتصفح.
