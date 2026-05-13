@@ -1,254 +1,606 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Omar Ibrahim | مصمم ومبرمج</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+<title>HOGAN | Official Streamer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&family=Orbitron:wght@700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
 
 <style>
-:root {
-    --primary: #00d2ff;
-    --text: #f8fafc;
-    --sub: #94a3b8;
-}
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Cairo',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
-/* الخلفية */
 body{
-    background: url("https://images.unsplash.com/photo-1605902711622-cfb43c4437d1") no-repeat center center/cover;
-    color: var(--text);
+font-family:'Poppins',sans-serif;
+background:#050505;
+overflow-x:hidden;
+color:white;
 }
 
-/* Overlay */
-body::before{
-    content:"";
-    position:fixed;
-    width:100%;
-    height:100%;
-    background: linear-gradient(to right, rgba(2,6,23,0.95), rgba(2,6,23,0.7));
-    z-index:0;
+/* BACKGROUND */
+
+.background{
+position:fixed;
+inset:0;
+z-index:-10;
+overflow:hidden;
+
+background:
+radial-gradient(circle at top left,#ffd70022,transparent 25%),
+radial-gradient(circle at bottom right,#ffae0020,transparent 25%),
+linear-gradient(135deg,#020202,#0a0a0a,#050505);
 }
 
-/* Glow */
-body::after{
-    content:"";
-    position:fixed;
-    width:300px;
-    height:300px;
-    background: radial-gradient(circle, #00d2ff55, transparent 70%);
-    top:20%;
-    left:70%;
-    filter: blur(80px);
-    z-index:0;
+.grid{
+position:absolute;
+width:100%;
+height:100%;
+
+background-image:
+linear-gradient(rgba(255,215,0,.04) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,215,0,.04) 1px, transparent 1px);
+
+background-size:60px 60px;
+
+animation:gridMove 12s linear infinite;
 }
 
-header, .container, footer{
-    position:relative;
-    z-index:1;
+@keyframes gridMove{
+0%{
+transform:translateY(0px);
+}
+100%{
+transform:translateY(60px);
+}
+}
+
+.glow{
+position:absolute;
+border-radius:50%;
+filter:blur(120px);
+opacity:.25;
+animation:float 10s ease-in-out infinite;
+}
+
+.glow1{
+width:400px;
+height:400px;
+background:#ffd700;
+top:-120px;
+left:-120px;
+}
+
+.glow2{
+width:300px;
+height:300px;
+background:#ffb300;
+bottom:-80px;
+right:-80px;
+animation-delay:2s;
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(35px);
+}
 }
 
 /* HERO */
-header{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+}
+
+.container{
+width:100%;
+max-width:1250px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,215,0,.12);
+
+backdrop-filter:blur(18px);
+
+border-radius:40px;
+
+padding:50px;
+
+position:relative;
+overflow:hidden;
+
+box-shadow:
+0 0 80px rgba(255,215,0,.08),
+0 0 180px rgba(0,0,0,.7);
+}
+
+.container::before{
+content:'';
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+120deg,
+transparent,
+rgba(255,215,0,.08),
+transparent);
+
+transform:translateX(-100%);
+animation:shine 6s infinite;
+}
+
+@keyframes shine{
+100%{
+transform:translateX(150%);
+}
+}
+
+.top{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:60px;
+flex-wrap:wrap;
+}
+
+.image-area{
+flex:1;
+display:flex;
+justify-content:center;
+min-width:300px;
+}
+
+.image-box{
+width:360px;
+height:360px;
+
+border-radius:35px;
+overflow:hidden;
+
+position:relative;
+
+border:2px solid rgba(255,215,0,.2);
+
+background:#111;
+
+box-shadow:
+0 0 40px rgba(255,215,0,.15),
+0 0 120px rgba(255,215,0,.08);
+}
+
+.image-box img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:contrast(1.08) saturate(1.15);
+}
+
+.content{
+flex:1;
+min-width:320px;
+}
+
+.badge{
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:12px 24px;
+
+border-radius:50px;
+
+background:rgba(255,215,0,.08);
+
+border:1px solid rgba(255,215,0,.15);
+
+color:#ffd700;
+
+font-size:14px;
+font-weight:700;
+
+letter-spacing:2px;
+
+margin-bottom:25px;
 }
 
 h1{
-    font-size:3rem;
-    color:var(--primary);
+font-family:'Orbitron',sans-serif;
+
+font-size:95px;
+line-height:1;
+
+margin-bottom:25px;
+
+background:linear-gradient(to bottom,#fff,#ffd700);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-shadow:
+0 0 25px rgba(255,215,0,.2),
+0 0 50px rgba(255,215,0,.15);
 }
 
-.subtitle{
-    color:var(--sub);
-    margin-top:10px;
-    font-size:1.4rem;
+.description{
+font-family:'Cairo',sans-serif;
+
+font-size:20px;
+line-height:2.1;
+
+color:#d8d8d8;
+
+max-width:650px;
+
+margin-bottom:40px;
 }
 
-.btn{
-    margin-top:15px;
-    padding:12px 25px;
-    border-radius:30px;
-    background:var(--primary);
-    color:#000;
-    text-decoration:none;
-    font-weight:bold;
-    transition:0.3s;
+.socials{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
 }
 
-.btn:hover{
-    opacity:0.8;
+.social{
+position:relative;
+
+display:flex;
+align-items:center;
+gap:18px;
+
+padding:22px;
+
+text-decoration:none;
+color:white;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,215,0,.08);
+
+border-radius:24px;
+
+overflow:hidden;
+
+transition:.4s;
 }
 
-/* SECTIONS */
+.social:hover{
+transform:translateY(-10px);
+
+border-color:#ffd70055;
+
+box-shadow:
+0 15px 40px rgba(255,215,0,.15);
+}
+
+.icon{
+min-width:65px;
+height:65px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:20px;
+
+background:rgba(255,215,0,.08);
+
+border:1px solid rgba(255,215,0,.1);
+
+font-size:28px;
+
+color:#ffd700;
+
+transition:.4s;
+}
+
+.social:hover .icon{
+background:#ffd700;
+color:black;
+transform:scale(1.08);
+}
+
+.social h3{
+font-size:20px;
+font-weight:700;
+}
+
+.footer{
+margin-top:55px;
+
+padding-top:25px;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.footer p{
+color:#8c8c8c;
+font-size:14px;
+}
+
+.footer-icons{
+display:flex;
+gap:15px;
+}
+
+.footer-icons a{
+width:50px;
+height:50px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:18px;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,215,0,.1);
+
+color:#ffd700;
+
+font-size:20px;
+
+text-decoration:none;
+
+transition:.35s;
+}
+
+.footer-icons a:hover{
+background:#ffd700;
+color:black;
+transform:translateY(-5px);
+}
+
+@media(max-width:950px){
+
 .container{
-    max-width:1000px;
-    margin:auto;
-    padding:50px 20px;
+padding:30px;
 }
 
-section{
-    margin-bottom:60px;
+.top{
+justify-content:center;
+text-align:center;
 }
 
-h2{
-    border-right:4px solid var(--primary);
-    padding-right:15px;
-    margin-bottom:25px;
+.content{
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
-.card{
-    background: rgba(30,41,59,0.85);
-    padding:25px;
-    border-radius:15px;
+h1{
+font-size:65px;
 }
 
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:20px;
+.description{
+margin:auto;
 }
 
-.skill{
-    background: rgba(30,41,59,0.85);
-    padding:15px;
-    text-align:center;
-    border-radius:10px;
-    border-bottom:2px solid var(--primary);
+.image-box{
+width:280px;
+height:280px;
 }
 
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:30px;
-    color:var(--sub);
 }
 
-.socials a{
-    display:block;
-    margin:10px 0;
-    font-size:20px;
-    text-decoration:none;
-    color:white;
-    transition:0.3s;
+@media(max-width:600px){
+
+.container{
+padding:20px;
+border-radius:25px;
 }
 
-.socials a:hover{
-    color:var(--primary);
+h1{
+font-size:48px;
 }
+
+.description{
+font-size:16px;
+}
+
+.socials{
+grid-template-columns:1fr;
+}
+
+.image-box{
+width:230px;
+height:230px;
+}
+
+.icon{
+min-width:55px;
+height:55px;
+font-size:22px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Omar Ibrahim</h1>
-    <p class="subtitle">Graphic Designer & Developer</p>
+<div class="background">
 
-    <a class="btn" href="https://wa.me/201003580014?text=مرحبا،%20أريد%20حجز%20مشروع">
-        احجز مشروعك دلوقتي
-    </a>
-</header>
+<div class="grid"></div>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+</div>
+
+<section class="hero">
 
 <div class="container">
 
-<section>
-<h2>من أنا</h2>
-<div class="card">
-أنا مصمم جرافيك ومطور مواقع، أستطيع تحويل فكرتك إلى تصميم احترافي وموقع حقيقي جاهز.
-</div>
-</section>
+<div class="top">
 
-<section>
-<h2>الخدمات</h2>
-<div class="card">
-<ul>
-<li>تصميم شعارات وهوية بصرية</li>
-<li>تصميم منشورات سوشيال ميديا</li>
-<li>تصميم مواقع باستخدام HTML</li>
-<li>برمجة باستخدام Java</li>
-</ul>
-</div>
-</section>
+<div class="image-area">
 
-<section>
-<h2>أدوات التصميم</h2>
-<div class="grid">
-<div class="skill">فوتوشوب</div>
-<div class="skill">إليستريتور</div>
-<div class="skill">كانفا</div>
-<div class="skill">فيجما</div>
-</div>
-</section>
+<div class="image-box">
 
-<section>
-<h2>أدوات البرمجة</h2>
-<div class="grid">
-<div class="skill">HTML</div>
-<div class="skill">CSS</div>
-<div class="skill">Java</div>
-</div>
-</section>
-
-<section>
-<h2>المهارات</h2>
-<div class="grid">
-<div class="skill">تصميم واجهات المستخدم (UI/UX)</div>
-<div class="skill">تصميم سوشيال ميديا</div>
-<div class="skill">تصميم الشعارات</div>
-<div class="skill">تصميم متجاوب</div>
-<div class="skill">حل المشكلات</div>
-<div class="skill">التفكير الإبداعي</div>
-</div>
-</section>
-
-<section>
-<h2>التعليم</h2>
-<div class="card">
-طالب في الدبلومة الأمريكية
-</div>
-</section>
+<img src="your-image.png" alt="HOGAN">
 
 </div>
 
-<footer>
+</div>
+
+<div class="content">
+
+<div class="badge">
+<i class="fa-solid fa-crown"></i>
+OFFICIAL STREAMER
+</div>
+
+<h1>HOGAN</h1>
+
+<p class="description">
+هوجان استريمر وصانع محتوى بيقدم لايفات مباشرة،
+محتوى جيمينج احترافي، وأقوى لحظات الحماس والترفيه
+مع مجتمع رهيب على جميع المنصات.
+</p>
+
+</div>
+
+</div>
 
 <div class="socials">
 
-<a href="https://www.facebook.com/omer.ibraheem.5477" target="_blank">
-فيسبوك
+<a href="https://www.youtube.com/@iHogan_07"
+target="_blank"
+class="social">
+
+<div class="icon">
+<i class="fa-brands fa-youtube"></i>
+</div>
+
+<h3>YouTube</h3>
+
 </a>
 
-<a href="https://www.instagram.com/omarnawar111/" target="_blank">
-إنستجرام
+<a href="https://www.tiktok.com/@ihogan_07"
+target="_blank"
+class="social">
+
+<div class="icon">
+<i class="fa-brands fa-tiktok"></i>
+</div>
+
+<h3>TikTok</h3>
+
 </a>
 
-<a href="https://wa.me/201003580014" target="_blank">
-واتساب
+<a href="https://kick.com/ihogan"
+target="_blank"
+class="social">
+
+<div class="icon">
+<i class="fa-brands fa-kickstarter-k"></i>
+</div>
+
+<h3>Kick</h3>
+
 </a>
 
-<a href="mailto:iomer3286@gmail.com">
-البريد الإلكتروني
+<a href="https://discord.com/invite/TUZV5dFCX"
+target="_blank"
+class="social">
+
+<div class="icon">
+<i class="fa-brands fa-discord"></i>
+</div>
+
+<h3>Discord</h3>
+
+</a>
+
+<a href="https://www.instagram.com/ihogan07/"
+target="_blank"
+class="social">
+
+<div class="icon">
+<i class="fa-brands fa-instagram"></i>
+</div>
+
+<h3>Instagram</h3>
+
+</a>
+
+<a href="https://www.whatsapp.com/channel/0029Vb8VWEG8kyyDgQoBmH1G"
+target="_blank"
+class="social">
+
+<div class="icon">
+<i class="fa-brands fa-whatsapp"></i>
+</div>
+
+<h3>WhatsApp</h3>
+
 </a>
 
 </div>
 
-<br>
-© 2026 Omar Ibrahim
+<div class="footer">
 
-</footer>
+<p>
+© 2026 HOGAN • ALL RIGHTS RESERVED
+</p>
+
+<div class="footer-icons">
+
+<a href="https://www.youtube.com/@iHogan_07" target="_blank">
+<i class="fa-brands fa-youtube"></i>
+</a>
+
+<a href="https://www.tiktok.com/@ihogan_07" target="_blank">
+<i class="fa-brands fa-tiktok"></i>
+</a>
+
+<a href="https://kick.com/ihogan" target="_blank">
+<i class="fa-brands fa-kickstarter-k"></i>
+</a>
+
+<a href="https://discord.com/invite/TUZV5dFCX" target="_blank">
+<i class="fa-brands fa-discord"></i>
+</a>
+
+<a href="https://www.instagram.com/ihogan07/" target="_blank">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 </body>
 </html>
