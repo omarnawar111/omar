@@ -1,684 +1,727 @@
+# موقع Omar Ibrahim الاحترافي الكامل
+
+احفظ الملف باسم:
+
+```html
+index.html
+```
+
+ثم انسخ الكود بالكامل:
+
+```html
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Omar Ibrahim | Developer & Designer</title>
+<title>Omar Ibrahim | Premium Portfolio</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<!-- FONT AWESOME -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 <style>
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-    font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-    background:#050816;
-    color:white;
-    overflow-x:hidden;
+background:#050816;
+color:white;
+overflow-x:hidden;
+cursor:none;
 }
 
-/* BACKGROUND */
-
-body::before{
-    content:"";
-    position:fixed;
-    width:500px;
-    height:500px;
-    background:#00d0ff33;
-    filter:blur(120px);
-    top:-100px;
-    right:-100px;
-    z-index:-1;
+#tsparticles{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-5;
 }
 
-body::after{
-    content:"";
-    position:fixed;
-    width:500px;
-    height:500px;
-    background:#8b5cf633;
-    filter:blur(120px);
-    bottom:-100px;
-    left:-100px;
-    z-index:-1;
+.intro{
+position:fixed;
+inset:0;
+background:#050816;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999999;
+animation:hideIntro 4s forwards;
 }
 
-/* NAVBAR */
+.intro h1{
+font-size:90px;
+color:#00d0ff;
+letter-spacing:40px;
+text-shadow:0 0 40px #00d0ff;
+transform:scale(3) rotate(20deg);
+filter:blur(40px);
+animation:assemble 3s ease forwards;
+}
+
+@keyframes assemble{
+0%{
+opacity:0;
+transform:translateY(300px) scale(3) rotate(20deg);
+filter:blur(50px);
+letter-spacing:80px;
+}
+
+100%{
+opacity:1;
+transform:translateY(0) scale(1) rotate(0);
+filter:blur(0);
+letter-spacing:10px;
+}
+}
+
+@keyframes hideIntro{
+0%,85%{
+opacity:1;
+visibility:visible;
+}
+
+100%{
+opacity:0;
+visibility:hidden;
+}
+}
+
+.cursor{
+width:25px;
+height:25px;
+border:2px solid #00d0ff;
+border-radius:50%;
+position:fixed;
+transform:translate(-50%,-50%);
+pointer-events:none;
+z-index:999999999;
+box-shadow:0 0 20px #00d0ff;
+transition:.07s;
+}
 
 nav{
-    width:100%;
-    position:fixed;
-    top:0;
-    left:0;
-    padding:20px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(0,0,0,.35);
-    backdrop-filter:blur(15px);
-    z-index:999;
-    border-bottom:1px solid rgba(255,255,255,.08);
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.3);
+backdrop-filter:blur(15px);
+z-index:9999;
+border-bottom:1px solid rgba(255,255,255,.1);
 }
 
 .logo{
-    font-size:32px;
-    font-weight:800;
-    color:#00d0ff;
-    letter-spacing:2px;
+font-size:35px;
+font-weight:900;
+color:#00d0ff;
 }
 
 nav ul{
-    display:flex;
-    gap:30px;
-    list-style:none;
+display:flex;
+gap:30px;
+list-style:none;
 }
 
 nav ul li a{
-    text-decoration:none;
-    color:white;
-    font-weight:500;
-    transition:.3s;
+text-decoration:none;
+color:white;
+font-weight:700;
+transition:.3s;
 }
 
 nav ul li a:hover{
-    color:#00d0ff;
+color:#00d0ff;
 }
 
-/* HERO */
-
 .hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:60px;
-    padding:150px 8% 80px;
-    flex-wrap:wrap;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:140px 8%;
+gap:60px;
+flex-wrap:wrap;
 }
 
 .hero-text{
-    flex:1;
-    min-width:300px;
+flex:1;
+min-width:300px;
 }
 
 .hero-text h1{
-    font-size:70px;
-    line-height:1.1;
-    margin-bottom:25px;
+font-size:75px;
+line-height:1.1;
+margin-bottom:20px;
 }
 
 .hero-text h1 span{
-    color:#00d0ff;
+color:#00d0ff;
 }
 
 .hero-text p{
-    font-size:20px;
-    line-height:1.9;
-    color:#cfcfcf;
-    margin-bottom:35px;
-    max-width:700px;
+font-size:22px;
+line-height:1.9;
+color:#d0d0d0;
+margin-bottom:30px;
+}
+
+.typing{
+color:#8b5cf6;
+font-size:35px;
+font-weight:700;
 }
 
 .buttons{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
 }
 
 .btn{
-    padding:15px 35px;
-    border-radius:16px;
-    text-decoration:none;
-    font-weight:700;
-    transition:.4s;
-    border:2px solid #00d0ff;
-    display:flex;
-    align-items:center;
-    gap:10px;
+padding:15px 35px;
+border-radius:18px;
+text-decoration:none;
+font-weight:700;
+transition:.4s;
+border:2px solid #00d0ff;
 }
 
 .btn-primary{
-    background:#00d0ff;
-    color:black;
+background:#00d0ff;
+color:black;
 }
 
 .btn-primary:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 25px #00d0ff;
+transform:translateY(-7px);
+box-shadow:0 0 30px #00d0ff;
 }
 
 .btn-outline{
-    color:white;
+color:white;
 }
 
 .btn-outline:hover{
-    background:#00d0ff;
-    color:black;
-    transform:translateY(-5px);
-}
-
-.hero-image{
-    flex:1;
-    min-width:300px;
-    display:flex;
-    justify-content:center;
+background:#00d0ff;
+color:black;
+transform:translateY(-7px);
 }
 
 .hero-image img{
-    width:420px;
-    max-width:100%;
-    border-radius:35px;
-    border:3px solid #00d0ff;
-    box-shadow:0 0 40px #00d0ff55;
-    object-fit:cover;
+width:420px;
+max-width:100%;
+border-radius:35px;
+border:3px solid #00d0ff;
+box-shadow:0 0 50px #00d0ff55;
 }
 
-/* SECTION */
-
 section{
-    padding:100px 8%;
+padding:100px 8%;
 }
 
 .title{
-    text-align:center;
-    font-size:48px;
-    margin-bottom:60px;
+font-size:50px;
+text-align:center;
+margin-bottom:60px;
 }
 
 .title span{
-    color:#00d0ff;
+color:#00d0ff;
 }
 
-/* CARDS */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
-}
-
-.card{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:25px;
-    padding:35px;
-    transition:.4s;
-    backdrop-filter:blur(15px);
-}
-
-.card:hover{
-    transform:translateY(-10px);
-    border-color:#00d0ff;
-    box-shadow:0 0 25px rgba(0,208,255,.3);
-}
-
-.card h3{
-    font-size:28px;
-    margin-bottom:15px;
-    color:#00d0ff;
-}
-
-.card p{
-    color:#d6d6d6;
-    line-height:1.9;
-}
-
-/* PROJECTS */
-
+.cards,
 .projects{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
 
+.card,
 .project{
-    background:#0f172a;
-    border-radius:25px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.08);
-    transition:.4s;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:30px;
+overflow:hidden;
+padding:35px;
+backdrop-filter:blur(15px);
+transition:.5s;
 }
 
+.card:hover,
 .project:hover{
-    transform:scale(1.03);
-    border-color:#00d0ff;
+transform:perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(-10px);
+box-shadow:0 0 30px #00d0ff55;
+border-color:#00d0ff;
+}
+
+.card h3,
+.project h3{
+font-size:30px;
+margin-bottom:15px;
+color:#00d0ff;
+}
+
+.card p,
+.project p{
+line-height:1.9;
+color:#d4d4d4;
 }
 
 .project img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:20px;
+margin-bottom:20px;
 }
 
-.project-content{
-    padding:25px;
+.skills{
+max-width:900px;
+margin:auto;
 }
 
-.project-content h3{
-    margin-bottom:15px;
-    color:#00d0ff;
-    font-size:25px;
+.skill{
+margin-bottom:30px;
 }
 
-.project-content p{
-    color:#cfcfcf;
-    line-height:1.8;
-    margin-bottom:20px;
+.skill h3{
+margin-bottom:10px;
 }
 
-/* SOCIAL */
+.bar{
+height:18px;
+background:#111827;
+border-radius:30px;
+overflow:hidden;
+}
+
+.bar span{
+display:block;
+height:100%;
+background:linear-gradient(90deg,#00d0ff,#8b5cf6);
+box-shadow:0 0 20px #00d0ff;
+border-radius:30px;
+}
 
 .socials{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
 }
 
 .socials a{
-    text-decoration:none;
-    color:white;
-    background:#0f172a;
-    padding:16px 28px;
-    border-radius:16px;
-    transition:.3s;
-    font-weight:700;
-    border:1px solid rgba(255,255,255,.08);
-    display:flex;
-    align-items:center;
-    gap:10px;
+padding:15px 25px;
+background:#111827;
+color:white;
+text-decoration:none;
+border-radius:15px;
+transition:.4s;
+font-weight:700;
 }
 
 .socials a:hover{
-    background:#00d0ff;
-    color:black;
-    transform:translateY(-5px);
+background:#00d0ff;
+color:black;
+transform:translateY(-5px);
 }
-
-/* CONTACT */
 
 .contact-box{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:30px;
-    padding:50px;
-    text-align:center;
+max-width:700px;
+margin:auto;
+background:rgba(255,255,255,.05);
+padding:45px;
+border-radius:35px;
+text-align:center;
+border:1px solid rgba(255,255,255,.08);
 }
 
-/* FOOTER */
+.contact-box h3{
+font-size:40px;
+margin-bottom:20px;
+color:#00d0ff;
+}
+
+.contact-box p{
+font-size:22px;
+margin:15px 0;
+color:#d8d8d8;
+}
+
+.whatsapp{
+position:fixed;
+left:25px;
+bottom:25px;
+width:65px;
+height:65px;
+border-radius:50%;
+background:#25d366;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:32px;
+text-decoration:none;
+color:white;
+z-index:99999;
+box-shadow:0 0 30px #25d366;
+animation:float 2s infinite ease-in-out;
+}
+
+.music-btn{
+position:fixed;
+right:25px;
+bottom:25px;
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+background:#8b5cf6;
+color:white;
+font-size:28px;
+cursor:pointer;
+z-index:99999;
+box-shadow:0 0 30px #8b5cf6;
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+}
 
 footer{
-    text-align:center;
-    padding:30px;
-    color:#aaa;
-    border-top:1px solid rgba(255,255,255,.08);
+text-align:center;
+padding:30px;
+border-top:1px solid rgba(255,255,255,.1);
+color:#999;
 }
-
-/* MOBILE */
 
 @media(max-width:768px){
-
-    .hero{
-        text-align:center;
-    }
-
-    .hero-text h1{
-        font-size:48px;
-    }
-
-    nav ul{
-        display:none;
-    }
-
-    .buttons{
-        justify-content:center;
-    }
-
+.hero-text h1{
+font-size:45px;
 }
 
+.typing{
+font-size:24px;
+}
+
+nav ul{
+display:none;
+}
+
+.hero{
+text-align:center;
+}
+
+.buttons{
+justify-content:center;
+}
+
+.intro h1{
+font-size:45px;
+}
+}
 </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
+<div id="tsparticles"></div>
 
-<nav>
-
-<div class="logo">
-OMAR
+<div class="intro">
+<h1>OMAR</h1>
 </div>
 
+<div class="cursor"></div>
+
+<nav>
+<div class="logo">OMAR</div>
+
 <ul>
-<li><a href="#about">About</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#contact">Contact</a></li>
+<li><a href="#about">عني</a></li>
+<li><a href="#services">الخدمات</a></li>
+<li><a href="#projects">الأعمال</a></li>
+<li><a href="#skills">المهارات</a></li>
+<li><a href="#contact">التواصل</a></li>
 </ul>
-
 </nav>
-
-<!-- HERO -->
 
 <section class="hero">
 
-<div class="hero-text">
-
+<div class="hero-text" data-aos="fade-right">
 <h1>
-<span>Omar Ibrahim</span><br>
-Web Developer & Graphic Designer
+أنا <span>Omar Ibrahim</span>
 </h1>
 
+<div class="typing"></div>
+
 <p>
-بصمم و ببرمج مواقع احترافية بشكل عصري وسريع
-مع UI/UX حديث وتأثيرات قوية تناسب الـ Gaming
-والـ Personal Branding وصناع المحتوى.
+مطور مواقع ومصمم جرافيك بقدم مواقع احترافية عصرية وسريعة
+بتصميمات قوية وتجربة استخدام ممتازة.
 </p>
 
 <div class="buttons">
-
-<a href="#contact" class="btn btn-primary">
-<i class="fa-solid fa-paper-plane"></i>
-تواصل معايا
-</a>
-
-<a href="#projects" class="btn btn-outline">
-<i class="fa-solid fa-code"></i>
-شوف شغلي
-</a>
-
+<a href="#contact" class="btn btn-primary">تواصل معايا</a>
+<a href="#projects" class="btn btn-outline">شوف شغلي</a>
+</div>
 </div>
 
-</div>
-
-<div class="hero-image">
-
-<img src="your-photo.jpg" alt="Omar">
-
+<div class="hero-image" data-aos="zoom-in">
+<img src="your-photo.jpg" alt="Omar Ibrahim">
 </div>
 
 </section>
-
-<!-- ABOUT -->
 
 <section id="about">
-
-<h2 class="title">
-About <span>Me</span>
-</h2>
+<h2 class="title">من <span>أنا</span></h2>
 
 <div class="cards">
 
-<div class="card">
+<div class="card" data-aos="fade-up">
 <h3>Web Development</h3>
 <p>
-تصميم وبرمجة مواقع احترافية متجاوبة مع جميع الأجهزة
-بأحدث التقنيات وسرعة عالية.
+تصميم وبرمجة مواقع احترافية متجاوبة مع جميع الأجهزة.
 </p>
 </div>
 
-<div class="card">
-<h3>UI / UX Design</h3>
+<div class="card" data-aos="fade-up">
+<h3>UI/UX Design</h3>
 <p>
-واجهات احترافية عصرية بتجربة استخدام ممتازة
-وتأثيرات حديثة.
+تصميم واجهات احترافية حديثة وتجربة مستخدم قوية.
 </p>
 </div>
 
-<div class="card">
+<div class="card" data-aos="fade-up">
 <h3>Graphic Design</h3>
 <p>
-تصميمات سوشيال ميديا وبنرات ولوجوهات
-بشكل احترافي.
+تصميم لوجوهات وبنرات وصور سوشيال ميديا وهوية بصرية كاملة.
 </p>
 </div>
 
 </div>
-
 </section>
 
-<!-- SERVICES -->
-
 <section id="services">
-
-<h2 class="title">
-My <span>Services</span>
-</h2>
+<h2 class="title">الخدمات <span>الاحترافية</span></h2>
 
 <div class="cards">
 
-<div class="card">
-<h3>Portfolio Websites</h3>
-<p>
-مواقع شخصية احترافية للمبرمجين والاستريمرات
-وصناع المحتوى.
-</p>
-</div>
-
-<div class="card">
-<h3>Gaming Websites</h3>
-<p>
-مواقع Gaming بتأثيرات Neon و Animations
-احترافية.
-</p>
-</div>
-
-<div class="card">
+<div class="card" data-aos="zoom-in">
 <h3>Landing Pages</h3>
-<p>
-صفحات هبوط احترافية مناسبة للشركات
-والمشاريع.
-</p>
+<p>صفحات هبوط احترافية لزيادة المبيعات والعملاء.</p>
 </div>
 
-<div class="card">
-<h3>Social Media Design</h3>
-<p>
-تصميمات احترافية للسوشيال ميديا والجيمينج.
-</p>
+<div class="card" data-aos="zoom-in">
+<h3>Gaming Websites</h3>
+<p>مواقع جيمينج واستريمرات بتأثيرات احترافية.</p>
+</div>
+
+<div class="card" data-aos="zoom-in">
+<h3>Portfolio Websites</h3>
+<p>بورتفوليوهات احترافية للمبرمجين وصناع المحتوى.</p>
 </div>
 
 </div>
-
 </section>
 
-<!-- PROJECTS -->
-
 <section id="projects">
-
-<h2 class="title">
-Latest <span>Projects</span>
-</h2>
+<h2 class="title">أحدث <span>الأعمال</span></h2>
 
 <div class="projects">
 
-<div class="project">
-
+<div class="project" data-aos="fade-up">
 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
-
-<div class="project-content">
-
-<h3>Gaming Website</h3>
-
-<p>
-موقع Gaming احترافي بتأثيرات حديثة و Neon Style.
-</p>
-
-<a href="https://omarnawar111.github.io/hogan/" target="_blank" class="btn btn-primary">
-<i class="fa-solid fa-arrow-up-right-from-square"></i>
-فتح المشروع
-</a>
-
-</div>
-
-</div>
-
-<div class="project">
-
-<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop">
-
-<div class="project-content">
-
-<h3>Modern Landing Page</h3>
-
-<p>
-Landing Page سريعة وعصرية مناسبة لأي Business أو Brand.
-</p>
-
-<a href="https://1421.netlify.app/" target="_blank" class="btn btn-primary">
-<i class="fa-solid fa-arrow-up-right-from-square"></i>
-فتح المشروع
-</a>
-
-</div>
-
-</div>
-
-<div class="project">
-
-<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1200&auto=format&fit=crop">
-
-<div class="project-content">
-
 <h3>Streamer Website</h3>
-
-<p>
-تصميم Streamer Website بشكل احترافي
-وحركات Animation قوية.
-</p>
-
-<a href="https://sheko-elgen.netlify.app/" target="_blank" class="btn btn-primary">
-<i class="fa-solid fa-arrow-up-right-from-square"></i>
-فتح المشروع
-</a>
-
+<p>موقع احترافي لاستريمر بتصميم عصري وتأثيرات قوية.</p>
 </div>
 
-</div>
-
-<div class="project">
-
+<div class="project" data-aos="fade-up">
 <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
+<h3>Modern Portfolio</h3>
+<p>بورتفوليو احترافي سريع ومتجاوب.</p>
+</div>
 
-<div class="project-content">
-
-<h3>Portfolio Website</h3>
-
-<p>
-Portfolio عصري لعرض الخدمات والشغل
-بشكل Premium.
-</p>
-
-<a href="https://elmnoufy.netlify.app/" target="_blank" class="btn btn-primary">
-<i class="fa-solid fa-arrow-up-right-from-square"></i>
-فتح المشروع
-</a>
-
+<div class="project" data-aos="fade-up">
+<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1200&auto=format&fit=crop">
+<h3>Gaming UI</h3>
+<p>تصميم Gaming حديث بإضاءات وتأثيرات قوية.</p>
 </div>
 
 </div>
-
-</div>
-
 </section>
 
-<!-- SOCIAL -->
+<section id="skills">
+<h2 class="title">المهارات <span>الاحترافية</span></h2>
+
+<div class="skills">
+
+<div class="skill">
+<h3>HTML</h3>
+<div class="bar"><span style="width:95%"></span></div>
+</div>
+
+<div class="skill">
+<h3>CSS</h3>
+<div class="bar"><span style="width:90%"></span></div>
+</div>
+
+<div class="skill">
+<h3>JavaScript</h3>
+<div class="bar"><span style="width:80%"></span></div>
+</div>
+
+<div class="skill">
+<h3>Photoshop</h3>
+<div class="bar"><span style="width:92%"></span></div>
+</div>
+
+</div>
+</section>
 
 <section>
-
-<h2 class="title">
-Social <span>Links</span>
-</h2>
+<h2 class="title">السوشيال <span>ميديا</span></h2>
 
 <div class="socials">
-
-<a href="https://www.facebook.com/omer.ibraheem.5477" target="_blank">
-<i class="fa-brands fa-facebook-f"></i>
-Facebook
-</a>
-
-<a href="https://www.instagram.com/omarnawar111/" target="_blank">
-<i class="fa-brands fa-instagram"></i>
-Instagram
-</a>
-
-<a href="https://www.tiktok.com/@omeribraheem0" target="_blank">
-<i class="fa-brands fa-tiktok"></i>
-TikTok
-</a>
-
-<a href="https://discord.com/users/elmnoufy1" target="_blank">
-<i class="fa-brands fa-discord"></i>
-Discord
-</a>
-
+<a href="https://www.facebook.com/omer.ibraheem.5477" target="_blank">Facebook</a>
+<a href="https://www.instagram.com/omarnawar111/" target="_blank">Instagram</a>
+<a href="https://www.tiktok.com/@omeribraheem0" target="_blank">TikTok</a>
 </div>
-
 </section>
-
-<!-- CONTACT -->
 
 <section id="contact">
+<h2 class="title">تواصل <span>معايا</span></h2>
 
-<h2 class="title">
-Contact <span>Me</span>
-</h2>
+<div class="contact-box" data-aos="zoom-in">
+<h3>جاهز لأي شغل احترافي 🔥</h3>
 
-<div class="contact-box">
-
-<h2 style="margin-bottom:30px;color:#00d0ff;">
-جاهز لأي شغل احترافي 🔥
-</h2>
-
-<div class="buttons" style="justify-content:center;">
-
-<a href="https://wa.me/201003580014"
-target="_blank"
-class="btn btn-primary">
-<i class="fa-brands fa-whatsapp"></i>
-WhatsApp
-</a>
-
-<a href="tel:+201003580014"
-class="btn btn-outline">
-<i class="fa-solid fa-phone"></i>
-01003580014
-</a>
-
-<a href="https://discord.com/users/elmnoufy1"
-target="_blank"
-class="btn btn-outline">
-<i class="fa-brands fa-discord"></i>
-Discord
-</a>
-
+<p>📞 01003580014</p>
+<p>💬 Discord: elmnoufy1</p>
+<p>📍 Egypt</p>
 </div>
-
-</div>
-
 </section>
 
-<!-- FOOTER -->
-
 <footer>
-
-© 2026 Omar Ibrahim — All Rights Reserved
-
+© 2026 Omar Ibrahim - All Rights Reserved
 </footer>
+
+<a href="https://wa.me/201003580014" class="whatsapp" target="_blank">💬</a>
+
+<button class="music-btn">🎵</button>
+
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script>
+const cursor = document.querySelector('.cursor');
+
+document.addEventListener('mousemove',(e)=>{
+cursor.style.left = e.clientX + 'px';
+cursor.style.top = e.clientY + 'px';
+});
+
+new Typed('.typing',{
+strings:[
+'Web Developer',
+'Graphic Designer',
+'UI/UX Designer',
+'Content Creator'
+],
+typeSpeed:80,
+backSpeed:50,
+loop:true
+});
+
+AOS.init({
+duration:1200,
+once:true
+});
+
+const musicBtn = document.querySelector('.music-btn');
+const music = document.getElementById('bgMusic');
+
+musicBtn.onclick = ()=>{
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+}
+
+
+
+tsParticles.load("tsparticles", {
+particles: {
+number: {
+value: 80
+},
+
+color: {
+value: "#00d0ff"
+},
+
+links: {
+enable: true,
+color: "#00d0ff"
+},
+
+move: {
+enable: true,
+speed: 1
+}
+}
+});
+</script>
 
 </body>
 </html>
+```
+
+# مهم جدًا
+
+## صورتك
+
+غير:
+
+```html
+your-photo.jpg
+```
+
+بصورتك.
+
+---
+
+## الموسيقى
+
+حط ملف mp3 باسم:
+
+```text
+music.mp3
+```
+
+جنب ملف الموقع.
+
+---
+
+## التشغيل
+
+افتح `index.html` بالمتصفح وهيشتغل كامل بكل الانيميشن والتأثيرات.
