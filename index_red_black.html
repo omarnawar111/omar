@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omar Ibrahim | Web Developer &amp; Designer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root{
+  --bg:#070707;
+  --bg-soft:#121212;
+  --cyan:#ff1e2d;
+  --violet:#8a000f;
+  --magenta:#c00018;
+  --text-dim:#a9b0c6;
+  --card:rgba(255,255,255,.045);
+  --border:rgba(255,255,255,.09);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Cairo',sans-serif;
+  scroll-behavior:smooth;
+}
+
+html{scrollbar-color:var(--cyan) var(--bg);}
+
+body{
+  background:var(--bg);
+  color:white;
+  overflow-x:hidden;
+  cursor:none;
+  position:relative;
+}
+
+/* ===== background layers ===== */
+.bg-grid{
+  position:fixed;
+  inset:0;
+  z-index:-6;
+  background-image:
+    linear-gradient(rgba(255,30,45,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,30,45,.06) 1px, transparent 1px);
+  background-size:46px 46px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 20%, black 40%, transparent 100%);
+}
+
+.bg-glow{
+  position:fixed;
+  inset:0;
+  z-index:-7;
+  background:
+    radial-gradient(700px 500px at 12% 8%, rgba(255,30,45,.16), transparent 60%),
+    radial-gradient(800px 600px at 88% 18%, rgba(138,0,15,.16), transparent 60%),
+    radial-gradient(700px 700px at 50% 100%, rgba(192,0,24,.10), transparent 60%),
+    var(--bg);
+  animation:drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift{
+  0%{filter:hue-rotate(0deg);}
+  100%{filter:hue-rotate(25deg);}
+}
+
+#tsparticles{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:-5;
+}
+
+/* ===== intro ===== */
+.intro{
+  position:fixed;
+  inset:0;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  justify-content:center;
+  align-items:center;
+  z-index:999999;
+  animation:hideIntro 3.6s forwards;
+}
+
+.intro h1{
+  font-size:80px;
+  color:var(--cyan);
+  letter-spacing:26px;
+  text-shadow:0 0 40px var(--cyan);
+  transform:scale(2.4) rotate(14deg);
+  filter:blur(30px);
+  animation:assemble 2.4s ease forwards;
+}
+
+.intro span{
+  font-size:16px;
+  letter-spacing:8px;
+  color:var(--text-dim);
+  opacity:0;
+  animation:fadeSub .8s ease forwards 2s;
+}
+
+@keyframes fadeSub{ to{opacity:1;} }
+
+@keyframes assemble{
+  0%{
+    opacity:0;
+    transform:translateY(220px) scale(2.4) rotate(14deg);
+    filter:blur(40px);
+    letter-spacing:60px;
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0) scale(1) rotate(0);
+    filter:blur(0);
+    letter-spacing:10px;
+  }
+}
+
+@keyframes hideIntro{
+  0%,88%{opacity:1; visibility:visible;}
+  100%{opacity:0; visibility:hidden;}
+}
+
+/* ===== cursor ===== */
+.cursor{
+  width:24px;
+  height:24px;
+  border:2px solid var(--cyan);
+  border-radius:50%;
+  position:fixed;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:999999999;
+  box-shadow:0 0 20px var(--cyan);
+  transition:.08s;
+}
+.cursor-dot{
+  width:4px;
+  height:4px;
+  background:var(--cyan);
+  border-radius:50%;
+  position:fixed;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:999999999;
+}
+
+@media(max-width:900px){
+  body{cursor:auto;}
+  .cursor,.cursor-dot{display:none;}
+}
+
+/* ===== nav ===== */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(7,7,7,.55);
+  backdrop-filter:blur(18px);
+  z-index:9999;
+  border-bottom:1px solid var(--border);
+}
+
+.logo{
+  font-size:28px;
+  font-weight:900;
+  color:white;
+  letter-spacing:1px;
+}
+.logo span{color:var(--cyan);}
+
+nav ul{
+  display:flex;
+  gap:34px;
+  list-style:none;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:white;
+  font-weight:700;
+  font-size:15px;
+  position:relative;
+  transition:.3s;
+}
+nav ul li a::after{
+  content:'';
+  position:absolute;
+  right:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--cyan);
+  transition:.35s;
+}
+nav ul li a:hover{color:var(--cyan);}
+nav ul li a:hover::after{width:100%;}
+
+/* ===== hero ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:150px 8% 100px;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+.hero-text{
+  flex:1;
+  min-width:320px;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 18px;
+  border:1px solid var(--border);
+  border-radius:50px;
+  font-size:13px;
+  color:var(--cyan);
+  letter-spacing:2px;
+  margin-bottom:26px;
+}
+.eyebrow::before{
+  content:'';
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 12px var(--cyan);
+  animation:pulse 1.6s infinite;
+}
+@keyframes pulse{
+  0%,100%{opacity:1;}
+  50%{opacity:.3;}
+}
+
+.hero-text h1{
+  font-size:68px;
+  line-height:1.15;
+  margin-bottom:20px;
+  font-weight:900;
+}
+
+.hero-text h1 span{
+  background:linear-gradient(90deg,var(--cyan),var(--violet));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero-text p{
+  font-size:19px;
+  line-height:1.9;
+  color:var(--text-dim);
+  margin-bottom:34px;
+  max-width:560px;
+}
+
+.typing{
+  color:var(--violet);
+  font-size:30px;
+  font-weight:700;
+  margin-bottom:18px;
+  display:block;
+}
+
+.buttons{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:15px 34px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:700;
+  transition:.4s;
+  border:2px solid var(--cyan);
+  font-size:15px;
+  display:inline-block;
+}
+
+.btn-primary{
+  background:var(--cyan);
+  color:#03131a;
+}
+.btn-primary:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 30px rgba(255,30,45,.35);
+}
+
+.btn-outline{
+  color:white;
+  border-color:var(--border);
+}
+.btn-outline:hover{
+  border-color:var(--cyan);
+  background:rgba(255,30,45,.08);
+  color:var(--cyan);
+  transform:translateY(-6px);
+}
+
+/* ===== hero visual (replaces personal photo) ===== */
+.hero-visual{
+  flex:1;
+  min-width:320px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.orb-wrap{
+  position:relative;
+  width:400px;
+  height:400px;
+  max-width:100%;
+}
+
+.orb-ring{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:1px dashed rgba(255,30,45,.35);
+  animation:spin 22s linear infinite;
+}
+.orb-ring.r2{
+  inset:40px;
+  border-color:rgba(138,0,15,.35);
+  animation-duration:16s;
+  animation-direction:reverse;
+}
+
+@keyframes spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+
+.orb-core{
+  position:absolute;
+  inset:90px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, rgba(255,30,45,.5), rgba(138,0,15,.3) 55%, transparent 80%);
+  border:1px solid var(--border);
+  backdrop-filter:blur(6px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 0 80px rgba(255,30,45,.25);
+}
+
+.orb-core i{
+  font-size:64px;
+  color:white;
+  text-shadow:0 0 30px var(--cyan);
+}
+
+.orb-chip{
+  position:absolute;
+  padding:10px 16px;
+  background:rgba(18,18,18,.85);
+  border:1px solid var(--border);
+  border-radius:12px;
+  font-size:13px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  backdrop-filter:blur(10px);
+  animation:float 3.4s ease-in-out infinite;
+}
+.orb-chip i{color:var(--cyan);}
+.chip1{top:6%; left:0; animation-delay:0s;}
+.chip2{bottom:14%; left:-6%; animation-delay:.6s;}
+.chip3{top:12%; right:-4%; animation-delay:1.1s;}
+.chip4{bottom:2%; right:8%; animation-delay:1.7s;}
+
+/* ===== sections ===== */
+section{
+  padding:110px 8%;
+  position:relative;
+}
+
+.title{
+  font-size:44px;
+  text-align:center;
+  margin-bottom:16px;
+  font-weight:900;
+}
+.title span{
+  background:linear-gradient(90deg,var(--cyan),var(--violet));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.subtitle{
+  text-align:center;
+  color:var(--text-dim);
+  max-width:560px;
+  margin:0 auto 60px;
+  font-size:16px;
+}
+
+.cards,
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+}
+
+.card,
+.project{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:26px;
+  overflow:hidden;
+  padding:32px;
+  backdrop-filter:blur(15px);
+  transition:.45s;
+}
+
+.card:hover,
+.project:hover{
+  transform:perspective(1000px) rotateX(4deg) rotateY(-4deg) translateY(-8px);
+  box-shadow:0 20px 40px rgba(255,30,45,.15);
+  border-color:rgba(255,30,45,.5);
+}
+
+.card h3,
+.project h3{
+  font-size:24px;
+  margin-bottom:12px;
+  color:white;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.card h3 i{color:var(--cyan);}
+
+.card p,
+.project p{
+  line-height:1.85;
+  color:var(--text-dim);
+  font-size:15px;
+}
+
+.project-icon{
+  width:100%;
+  height:150px;
+  border-radius:18px;
+  margin-bottom:22px;
+  border:1px solid var(--border);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,30,45,.25), transparent 55%),
+    radial-gradient(circle at 75% 75%, rgba(138,0,15,.22), transparent 55%),
+    var(--bg-soft);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:.4s;
+}
+
+.project-icon i{
+  font-size:42px;
+  color:var(--cyan);
+  text-shadow:0 0 22px rgba(255,30,45,.5);
+  transition:.4s;
+}
+
+.project:hover .project-icon{
+  border-color:rgba(255,30,45,.5);
+  transform:translateY(-2px);
+}
+.project:hover .project-icon i{
+  transform:scale(1.12);
+  color:white;
+}
+
+.project .btn{
+  margin-top:18px;
+  padding:11px 26px;
+  font-size:14px;
+}
+
+/* ===== skills ===== */
+.skills-wrap{
+  max-width:900px;
+  margin:auto;
+}
+
+.skill{
+  margin-bottom:28px;
+}
+
+.skill-head{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  font-weight:700;
+}
+.skill-head span{color:var(--cyan);}
+
+.bar{
+  height:12px;
+  background:var(--bg-soft);
+  border-radius:30px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+
+.bar span{
+  display:block;
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--cyan),var(--violet));
+  box-shadow:0 0 20px rgba(255,30,45,.5);
+  border-radius:30px;
+  transition:width 1.4s ease;
+}
+
+/* ===== socials ===== */
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.socials a{
+  padding:15px 28px;
+  background:var(--card);
+  border:1px solid var(--border);
+  color:white;
+  text-decoration:none;
+  border-radius:14px;
+  transition:.35s;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.socials a:hover{
+  border-color:var(--cyan);
+  color:var(--cyan);
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(255,30,45,.15);
+}
+
+.social-fb:hover{ border-color:#1877f2; color:#1877f2; box-shadow:0 10px 25px rgba(24,119,242,.2); }
+.social-ig:hover{ border-color:#e1306c; color:#e1306c; box-shadow:0 10px 25px rgba(225,48,108,.2); }
+.social-tt:hover{ border-color:#25f4ee; color:#25f4ee; box-shadow:0 10px 25px rgba(37,244,238,.2); }
+.social-dc:hover{ border-color:#5865f2; color:#5865f2; box-shadow:0 10px 25px rgba(88,101,242,.2); }
+
+/* ===== contact ===== */
+.contact-box{
+  max-width:640px;
+  margin:auto;
+  background:var(--card);
+  padding:50px 40px;
+  border-radius:30px;
+  text-align:center;
+  border:1px solid var(--border);
+}
+
+.contact-box h3{
+  font-size:32px;
+  margin-bottom:26px;
+  color:white;
+}
+
+.contact-item{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  font-size:18px;
+  margin:16px 0 30px;
+  color:var(--text-dim);
+}
+.contact-item i{color:var(--cyan); width:20px;}
+
+.contact-actions{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.contact-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:16px;
+}
+
+.discord-btn:hover{
+  border-color:#5865f2;
+  background:rgba(88,101,242,.12);
+  color:#5865f2;
+}
+
+/* ===== floating buttons ===== */
+.whatsapp{
+  position:fixed;
+  left:25px;
+  bottom:25px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#25d366;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:26px;
+  text-decoration:none;
+  color:white;
+  z-index:99999;
+  box-shadow:0 0 30px rgba(37,211,102,.5);
+  animation:floaty 2.4s infinite ease-in-out;
+}
+
+.music-btn{
+  position:fixed;
+  right:25px;
+  bottom:25px;
+  width:56px;
+  height:56px;
+  border:none;
+  border-radius:50%;
+  background:var(--violet);
+  color:white;
+  font-size:22px;
+  cursor:pointer;
+  z-index:99999;
+  box-shadow:0 0 30px rgba(138,0,15,.5);
+}
+
+@keyframes floaty{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-9px);}
+}
+
+footer{
+  text-align:center;
+  padding:34px;
+  border-top:1px solid var(--border);
+  color:#7c8296;
+  font-size:14px;
+}
+footer span{color:var(--cyan);}
+
+@media(max-width:768px){
+  .hero-text h1{font-size:40px;}
+  .typing{font-size:22px;}
+  nav ul{display:none;}
+  .hero{text-align:center; padding-top:130px;}
+  .buttons,.hero-text p{justify-content:center; margin-inline:auto;}
+  .intro h1{font-size:42px; letter-spacing:14px;}
+  .orb-wrap{width:280px; height:280px;}
+  .orb-core{inset:60px;}
+  .orb-core i{font-size:46px;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="bg-grid"></div>
+<div id="tsparticles"></div>
+
+<div class="intro">
+  <h1>Elmnoufy</h1>
+  <span>WEB DEVELOPER &amp; DESIGNER</span>
+</div>
+
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
+
+<nav>
+  <div class="logo">Elmnoufy<span>.</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+
+  <div class="hero-text" data-aos="fade-right">
+    <div class="eyebrow">Available for work</div>
+
+    <h1>I'm <span>Omar Ibrahim</span></h1>
+    <span class="typing"></span>
+
+    <p>
+    Web Developer & Graphic Designer
+I create modern, high-performance websites with clean designs and seamless user experiences that help businesses achieve their goals from the very first impression.
+
+      
+      مطور مواقع ومصمم جرافيك
+أقدّم مواقع إلكترونية عصرية وعالية الأداء، بتصميمات احترافية وتجربة استخدام سلسة تساعد نشاطك على تحقيق أهدافه من أول انطباع.
+    </p>
+
+    <div class="buttons">
+      <a href="#contact" class="btn btn-primary">Contact Me</a>
+      <a href="#projects" class="btn btn-outline">View Work</a>
+    </div>
+  </div>
+
+  <div class="hero-visual" data-aos="zoom-in">
+    <div class="orb-wrap">
+      <div class="orb-ring"></div>
+      <div class="orb-ring r2"></div>
+      <div class="orb-core"><i class="fas fa-code"></i></div>
+
+      <div class="orb-chip chip1"><i class="fab fa-html5"></i> HTML5</div>
+      <div class="orb-chip chip2"><i class="fab fa-css3-alt"></i> CSS3</div>
+      <div class="orb-chip chip3"><i class="fab fa-js"></i> JavaScript</div>
+      <div class="orb-chip chip4"><i class="fas fa-paint-brush"></i> UI/UX</div>
+    </div>
+  </div>
+
+</section>
+
+<section id="about">
+  <h2 class="title">About <span>Me</span></h2>
+  <p class="subtitle">شغال في تقاطع البرمجة والتصميم، وبحول الفكرة لموقع شغّال بيعبّر عن هوية العميل.</p>
+
+  <div class="cards">
+    <div class="card" data-aos="fade-up">
+      <h3><i class="fas fa-laptop-code"></i> Web Development</h3>
+      <p>تصميم وبرمجة مواقع احترافية متجاوبة مع جميع الأجهزة وسريعة التحميل.</p>
+    </div>
+
+   
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <h3><i class="fas fa-swatchbook"></i> Graphic Design</h3>
+      <p>تصميم لوجوهات وبنرات وصور سوشيال ميديا وهوية بصرية متكاملة.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="title">My <span>Services</span></h2>
+  <p class="subtitle">باقات مرنة حسب حجم المشروع وهدفه.</p>
+
+  <div class="cards">
+    <div class="card" data-aos="zoom-in">
+      <h3><i class="fas fa-rocket"></i> Landing Pages</h3>
+      <p>صفحات هبوط احترافية مصممة لزيادة المبيعات وجذب العملاء.</p>
+    </div>
+
+    <div class="card" data-aos="zoom-in" data-aos-delay="100">
+      <h3><i class="fas fa-gamepad"></i> Gaming Websites</h3>
+      <p>مواقع جيمينج واستريمرات بتأثيرات بصرية احترافية.</p>
+    </div>
+
+    <div class="card" data-aos="zoom-in" data-aos-delay="200">
+      <h3><i class="fas fa-briefcase"></i> Portfolio Websites</h3>
+      <p>بورتفوليوهات احترافية للمبرمجين وصناع المحتوى.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="title">Latest <span>Projects</span></h2>
+  <p class="subtitle">مجموعة من المشاريع اللي شتغلت عليها مؤخرًا.</p>
+
+  <div class="projects">
+
+    <div class="project" data-aos="fade-up">
+      <div class="project-icon"><i class="fas fa-gamepad"></i></div>
+      <h3>Hogan Streamer Website</h3>
+      <p>موقع احترافي لاستريمر بتصميم Gaming عصري وتأثيرات قوية.</p>
+      <a href="https://omarnawar111.github.io/hogan/" target="_blank" class="btn btn-primary">View Site</a>
+    </div>
+
+    
+
+   
+ 
+
+    <div class="project" data-aos="fade-up" data-aos-delay="100">
+      <div class="project-icon"><i class="fas fa-globe"></i></div>
+      <h3>Sheko Website</h3>
+      <p>موقع احترافي بتصميم عصري وتأثيرات بصرية سلسة.</p>
+      <a href="https://sheko-elgen.github.io/sheko/" target="_blank" class="btn btn-primary">View Site</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="title">My <span>Skills</span></h2>
+  <p class="subtitle">الأدوات والتقنيات اللي بشتغل بيها يوميًا.</p>
+
+  <div class="skills-wrap">
+
+    <div class="cards" style="margin-bottom:60px;">
+      <div class="card" data-aos="zoom-in">
+        <h3><i class="fab fa-html5"></i> HTML</h3>
+        <p>بناء مواقع سريعة ومتجاوبة.</p>
+      </div>
+
+      <div class="card" data-aos="zoom-in" data-aos-delay="80">
+        <h3><i class="fab fa-css3-alt"></i> CSS3</h3>
+        <p>تصميمات احترافية وتأثيرات حديثة.</p>
+      </div>
+
+      <div class="card" data-aos="zoom-in" data-aos-delay="160">
+        <h3><i class="fab fa-js"></i> JavaScript</h3>
+        <p>إضافة انيميشن وحركات تفاعلية قوية.</p>
+      </div>
+
+      <div class="card" data-aos="zoom-in" data-aos-delay="240">
+        <h3><i class="fas fa-paint-brush"></i> Photoshop</h3>
+        <p>تصميمات سوشيال ميديا وهوية بصرية.</p>
+      </div>
+
+    
+
+      <div class="card" data-aos="zoom-in" data-aos-delay="80">
+        <h3><i class="fas fa-video"></i> Premiere Pro</h3>
+        <p>مونتاج فيديوهات احترافية وتأثيرات قوية.</p>
+      </div>
+    </div>
+
+    <div class="skill" data-aos="fade-up">
+      <div class="skill-head"><h3>HTML</h3><span>95%</span></div>
+      <div class="bar"><span data-width="95%"></span></div>
+    </div>
+
+    <div class="skill" data-aos="fade-up">
+      <div class="skill-head"><h3>CSS</h3><span>90%</span></div>
+      <div class="bar"><span data-width="90%"></span></div>
+    </div>
+
+    <div class="skill" data-aos="fade-up">
+      <div class="skill-head"><h3>JavaScript</h3><span>80%</span></div>
+      <div class="bar"><span data-width="80%"></span></div>
+    </div>
+
+    <div class="skill" data-aos="fade-up">
+      <div class="skill-head"><h3>Photoshop</h3><span>92%</span></div>
+      <div class="bar"><span data-width="92%"></span></div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2 class="title">Social <span>Media</span></h2>
+  <p class="subtitle">تابعني وشوف آخر شغلي أول بأول.</p>
+
+  <div class="socials">
+    <a href="https://www.facebook.com/omer.ibraheem.5477" target="_blank" class="social-fb"><i class="fab fa-facebook-f"></i> Facebook</a>
+    <a href="https://www.instagram.com/omarnawar111/" target="_blank" class="social-ig"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.tiktok.com/@omeribraheem0" target="_blank" class="social-tt"><i class="fab fa-tiktok"></i> TikTok</a>
+    <a href="https://discord.gg/uxYqajU2Am" target="_blank" class="social-dc"><i class="fab fa-discord"></i> Discord</a>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="title">Get In <span>Touch</span></h2>
+
+  <div class="contact-box" data-aos="zoom-in">
+    <h3>جاهز لأي شغل احترافي 🔥</h3>
+
+    <div class="contact-item"><i class="fas fa-location-dot"></i> Egypt</div>
+
+    <div class="contact-actions">
+      <a href="tel:01003580014" class="btn btn-primary contact-btn"><i class="fas fa-phone"></i> 01003580014</a>
+      <a href="https://discord.gg/uxYqajU2Am" target="_blank" class="btn btn-outline contact-btn discord-btn"><i class="fab fa-discord"></i> Join Discord</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 <span>Omar Ibrahim</span> - All Rights Reserved
+</footer>
+
+<a href="https://wa.me/201003580014" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<button class="music-btn"><i class="fas fa-music"></i></button>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script>
+// custom cursor
+const cursor = document.querySelector('.cursor');
+const cursorDot = document.querySelector('.cursor-dot');
+document.addEventListener('mousemove',(e)=>{
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  cursorDot.style.left = e.clientX + 'px';
+  cursorDot.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,button,.card,.project').forEach(el=>{
+  el.addEventListener('mouseenter',()=> cursor.style.transform = 'translate(-50%,-50%) scale(1.6)');
+  el.addEventListener('mouseleave',()=> cursor.style.transform = 'translate(-50%,-50%) scale(1)');
+});
+
+// typing effect
+new Typed('.typing',{
+  strings:['Web Developer','Graphic Designer','UI/UX Designer','Content Creator'],
+  typeSpeed:80,
+  backSpeed:50,
+  loop:true
+});
+
+AOS.init({ duration:1100, once:true });
+
+// animate skill bars when visible
+const bars = document.querySelectorAll('.bar span');
+const barObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.width = entry.target.dataset.width;
+      barObserver.unobserve(entry.target);
+    }
+  });
+},{ threshold:0.4 });
+bars.forEach(b=> barObserver.observe(b));
+
+// background music toggle
+const musicBtn = document.querySelector('.music-btn');
+const music = document.getElementById('bgMusic');
+musicBtn.onclick = ()=>{
+  if(music.paused){ music.play(); musicBtn.classList.add('playing'); }
+  else{ music.pause(); }
+};
+
+// particles background
+tsParticles.load("tsparticles", {
+  fpsLimit:60,
+  particles:{
+    number:{ value:60, density:{ enable:true, area:900 } },
+    color:{ value:["#ff1e2d","#8a000f"] },
+    opacity:{ value:.5 },
+    size:{ value:{ min:1, max:3 } },
+    links:{ enable:true, color:"#ff1e2d", opacity:.18, distance:130 },
+    move:{ enable:true, speed:.7, outModes:{ default:"out" } }
+  },
+  interactivity:{
+    events:{ onHover:{ enable:true, mode:"grab" } },
+    modes:{ grab:{ distance:140, links:{ opacity:.3 } } }
+  },
+  detectRetina:true
+});
+</script>
+
+</body>
+</html>
